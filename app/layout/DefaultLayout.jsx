@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Image, StatusBar } from 'react-native'
 
 export default function DefaultLayout({children}) {
 
@@ -13,6 +13,7 @@ export default function DefaultLayout({children}) {
     
     return (
         <SafeAreaView style={{flex:1}}>
+             <StatusBar backgroundColor='#000' barStyle="light-content" />
             <View style={{flex:1, backgroundColor:'black'}}>
                 {children}
                 <View style={styles.tabs}>

@@ -2,15 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeRouter } from 'react-router-native';
-import DefaultLayout from './app/layout/DefaultLayout'
+
+import DefaultLayout from './app/layout/DefaultLayout';
+import Discover from './app/screens/Discover'
 
 export default function App() {
   return (
     <NativeRouter>
       <DefaultLayout>
-        <View style={styles.container}>
-          <Text>mubashir</Text>
-        </View>
+        <Discover />
       </DefaultLayout>
     </NativeRouter>
   );
@@ -19,7 +19,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
   },
