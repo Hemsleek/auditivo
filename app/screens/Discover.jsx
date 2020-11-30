@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, StatusBar,Platform, TouchableOpacit
 
 export default function Discover() {
     const discoverTab = 'TRENDING,TOP SONGS,TOP ALBUMS,RECENTLY ADDED'.split(',')
+
     const [tab,setTab] = useState(0)
     return (
         <View style={styles.handleStatusBar}>
@@ -20,7 +21,7 @@ export default function Discover() {
                     }
                 </View>
                 <View>
-
+                
                 </View>
             </ScrollView>
               

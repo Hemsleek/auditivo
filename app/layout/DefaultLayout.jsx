@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { StyleSheet, Text, View, SafeAreaView, Image, StatusBar } from 'react-native'
 
 export default function DefaultLayout({children}) {
@@ -10,7 +10,7 @@ export default function DefaultLayout({children}) {
         { name:'Search', icon:require('../assets/icon.png') },
         { name:'My Library', icon:require('../assets/icon.png') }
     ]
-    
+    const [screenTab , setScreenTab] = useState('Discover')
     return (
         <SafeAreaView style={{flex:1}}>
              <StatusBar backgroundColor='#000' barStyle="light-content" />
@@ -19,9 +19,15 @@ export default function DefaultLayout({children}) {
                 <View style={styles.tabs}>
                     {
                         tabs.map((tab,tabIndex) => (
-                            <View key={`screenTab_${tabIndex}`} style={styles.tab}>
+                            <View 
+                             key={`screenTab_${tabIndex}`} 
+                             style={styles.tab}
+                             onStartShouldSetResponder={() => setScreenTab(tab.name)}
+                            >
                                 <Image  style={styles.tabIcon}source={tab.icon} />
-                                <Text style={styles.screenText}>{tab.name}</Text> 
+                                <Text 
+                                 style={[styles.screenText, screenTab==tab.name && {color:'yellow'}]}>{tab.name}
+                                </Text> 
                             </View>))
                     }
                 </View>
