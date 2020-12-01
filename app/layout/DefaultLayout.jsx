@@ -1,14 +1,28 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View, SafeAreaView, Image, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native'
 
+
+//svg
+import FeedSvg from '../components/icons/Feed'
+import  SearchSvg from '../components/icons/Search'
+import PlaylistSvg from '../components/icons/Playlist'
+import DiscoverSvg from '../components/icons/DiscoverSvg'
+
+const LibraryView = () => (
+    <View style={styles.library}>
+        <Text style={styles.libraryText}>
+            A
+        </Text>
+    </View>
+)
 export default function DefaultLayout({children}) {
 
     const tabs = [
-        { name:'Feed', icon:require('../assets/icon.png') },
-        { name:'Playlists', icon:require('../assets/icon.png') },
-        { name:'Discover', icon:require('../assets/icon.png') },
-        { name:'Search', icon:require('../assets/icon.png') },
-        { name:'My Library', icon:require('../assets/icon.png') }
+        { name:'Feed', icon:<FeedSvg /> },
+        { name:'Playlists', icon:<PlaylistSvg /> },
+        { name:'Discover', icon:<DiscoverSvg /> },
+        { name:'Search', icon:<SearchSvg /> },
+        { name:'My Library', icon: <LibraryView />}
     ]
     const [screenTab , setScreenTab] = useState('Discover')
     return (
@@ -24,7 +38,8 @@ export default function DefaultLayout({children}) {
                              style={styles.tab}
                              onStartShouldSetResponder={() => setScreenTab(tab.name)}
                             >
-                                <Image  style={styles.tabIcon}source={tab.icon} />
+                                {tab.icon}
+
                                 <Text 
                                  style={[styles.screenText, screenTab==tab.name && {color:'orange'}]}>{tab.name}
                                 </Text> 
@@ -59,7 +74,22 @@ const styles = StyleSheet.create({
         marginBottom:6
     },
     screenText:{
-        color:'#f5f5f5'
+        color:'rgba(255,255,255,.7)',
+        paddingTop:4
+    },
+    library:{
+        borderRadius:50,
+        borderColor:'white',
+        borderStyle:'solid',
+        borderWidth:1,
+        backgroundColor:'gray',
+        alignItems:'center',
+        justifyContent: 'center',
+        width:22,
+        height:22
+    },
+    libraryText:{
+        color:'white'
     }
 })
 

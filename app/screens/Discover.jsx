@@ -3,11 +3,14 @@ import { StyleSheet, Text, View, ScrollView, StatusBar,Platform, TouchableOpacit
 
 //svg icons
 import PlaySvg from '../components/icons/Play'
-
+import LoveSvg from '../components/icons/Love'
+import ReUpSvg from '../components/icons/ReUp'
 
 export default function Discover() {
     const discoverTab = 'TRENDING,TOP SONGS,TOP ALBUMS,RECENTLY ADDED'.split(',')
     const options = 'All,Hip-Hop,Afrobeats,Latin,Reggae/Dancehall,R&B,Pop,Electronic,Instrumental,Podcast'.split(',')
+
+    const [songBg , setSongBg] = useState(null)
 
     const defaultSongs = [
         {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
@@ -20,7 +23,11 @@ export default function Discover() {
         {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
         {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624}
     ]
-    const actions = 'watched,loved,ReUp'.split(',')
+    const actions = [
+        {name:'watched' , svg:<PlaySvg />},
+        {name:'loved' , svg:<LoveSvg />},
+        {name:'ReUp' , svg:<ReUpSvg />}
+    ]
 
     const [musicType , setMusicType] = useState(0)
     const [tab,setTab] = useState(0)
@@ -61,7 +68,7 @@ export default function Discover() {
                     <View style={styles.main}>
                         {
                             defaultSongs.map((song , songIndex)=> (
-                              <View style={styles.defaultSong}  key={`defaultSong_${songIndex}`} >
+                              <View style={[styles.defaultSong, songBg==songIndex && {backgroundColor:'rgba(255,255,255,.2)'}]} onStartShouldSetResponder={() => setSongBg(songIndex)} key={`defaultSong_${songIndex}`} >
                                   <Image style={{width:80,height:80}} source={song.coverPhoto} />
                                   <View style={styles.songOption}>
                                     <View style={styles.songTextContainer}>
@@ -73,12 +80,12 @@ export default function Discover() {
                                         </Text>
 
                                         <View style={styles.actionContainer}>
-                                            <PlaySvg />
+                                            
                                             {
-                                                actions.map(action =>   
-                                                    <View style={styles.action}key={`action-${action}`}>
-                                                        
-                                                        <Text style={styles.actionText}>{song[action]}</Text>
+                                                actions.map((action, actionIndex) =>   
+                                                    <View style={styles.action}key={`action-${actionIndex}`}>
+                                                        { action.svg }
+                                                        <Text style={styles.actionText}>{song[action.name]}</Text>
                                                     </View>
                                                     )
                                             }
@@ -195,10 +202,14 @@ const styles = StyleSheet.create({
         flexDirection:'row'
     },
     action:{
-        marginRight:7
+        marginRight:7,
+        flexDirection:'row',
+        alignItems:'center'
+
     },
     actionText:{
-        color:'white'
+        color:'white',
+        marginLeft:2
     }
 })
 
