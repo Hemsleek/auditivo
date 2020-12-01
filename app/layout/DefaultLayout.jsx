@@ -26,7 +26,7 @@ export default function DefaultLayout({children}) {
                             >
                                 <Image  style={styles.tabIcon}source={tab.icon} />
                                 <Text 
-                                 style={[styles.screenText, screenTab==tab.name && {color:'yellow'}]}>{tab.name}
+                                 style={[styles.screenText, screenTab==tab.name && {color:'orange'}]}>{tab.name}
                                 </Text> 
                             </View>))
                     }
