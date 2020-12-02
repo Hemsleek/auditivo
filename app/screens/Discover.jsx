@@ -5,6 +5,9 @@ import { StyleSheet, Text, View, ScrollView, StatusBar,Platform, TouchableOpacit
 import PlaySvg from '../components/icons/Play'
 import LoveSvg from '../components/icons/Love'
 import ReUpSvg from '../components/icons/ReUp'
+import DownloadSvg from '../components/icons/Download'
+import MoreSvg from '../components/icons/More'
+import ShuffleSvg from '../components/icons/shuffle'
 
 export default function Discover() {
     const discoverTab = 'TRENDING,TOP SONGS,TOP ALBUMS,RECENTLY ADDED'.split(',')
@@ -59,7 +62,7 @@ export default function Discover() {
                     </View>
                 </ScrollView>
                <View style={styles.mixSong}>
-                   <Image style={{ width:20,height:20 }} source={ require('../assets/icon.png') } />
+                   <ShuffleSvg />
                </View>
             </View>
            
@@ -92,11 +95,11 @@ export default function Discover() {
                                             
                                         </View>
                                     </View>
-                                    <View>
-                                        <View>
-                                            <Image />
+                                    <View style={styles.downMore}>
+                                        <View style={styles.download}>
+                                            <DownloadSvg />
                                         </View>
-                                        <Image />
+                                        <MoreSvg />
                                     </View>
                                   </View>
                               </View>  
@@ -183,7 +186,10 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         paddingHorizontal:15,
         alignItems:'center',
-        paddingVertical:10
+        paddingVertical:10,
+        borderBottomWidth:1,
+        borderColor:'rgba(255,255,255,.1)',
+        borderStyle:'solid'
     },
     songOption:{
         flex:1,
@@ -210,6 +216,19 @@ const styles = StyleSheet.create({
     actionText:{
         color:'white',
         marginLeft:2
+    },
+    downMore:{
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    download:{
+        borderRadius:20,
+        backgroundColor:'rgba(255,255,255,.2)',
+        alignItems:'center',
+        justifyContent: 'center',
+        marginRight:8,
+        height:23,
+        width:23
     }
 })
 

@@ -17,14 +17,15 @@ const LibraryView = () => (
 )
 export default function DefaultLayout({children}) {
 
+    const [screenTab , setScreenTab] = useState('Discover')
+
     const tabs = [
         { name:'Feed', icon:<FeedSvg /> },
         { name:'Playlists', icon:<PlaylistSvg /> },
-        { name:'Discover', icon:<DiscoverSvg /> },
+        { name:'Discover', icon:<DiscoverSvg style={screenTab=='Discover'? {fill:'orange'} : {fill:'white'}}/> },
         { name:'Search', icon:<SearchSvg /> },
         { name:'My Library', icon: <LibraryView />}
     ]
-    const [screenTab , setScreenTab] = useState('Discover')
     return (
         <SafeAreaView style={{flex:1}}>
              <StatusBar backgroundColor='#000' barStyle="light-content" />
