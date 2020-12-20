@@ -17,13 +17,13 @@ export default function Discover() {
 
     const defaultSongs = [
         {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
-        {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
-        {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
-        {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
-        {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
-        {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
-        {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
-        {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
+        {coverPhoto:require('../assets/image1.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
+        {coverPhoto:require('../assets/image2.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
+        {coverPhoto:require('../assets/image3.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
+        {coverPhoto:require('../assets/image4.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
+        {coverPhoto:require('../assets/image5.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
+        {coverPhoto:require('../assets/image6.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
+        {coverPhoto:require('../assets/image7.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624},
         {coverPhoto:require('../assets/cover0.jpg'),artisteName:'Lil Wayne', title : 'No ceiling 3 (Side A)',watched:'1.36M',loved:'3.72k',ReUp:624}
     ]
     const actions = [
@@ -40,6 +40,7 @@ export default function Discover() {
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                
                 <View style={styles.discoverTabs}>
+                    
                     {
                         discoverTab.map((item, itemIndex) => 
                         <View  
@@ -87,7 +88,7 @@ export default function Discover() {
                                             {
                                                 actions.map((action, actionIndex) =>   
                                                     <View style={styles.action}key={`action-${actionIndex}`}>
-                                                        { action.svg }
+                                                        { action.svg}
                                                         <Text style={styles.actionText}>{song[action.name]}</Text>
                                                     </View>
                                                     )

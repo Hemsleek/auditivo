@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native'
-
+import {Link} from 'react-router-native'
 
 //svg
 import FeedSvg from '../components/icons/Feed'
@@ -20,11 +20,11 @@ export default function DefaultLayout({children}) {
     const [screenTab , setScreenTab] = useState('Discover')
 
     const tabs = [
-        { name:'Feed', icon:<FeedSvg /> },
-        { name:'Playlists', icon:<PlaylistSvg /> },
-        { name:'Discover', icon:<DiscoverSvg style={screenTab=='Discover'? {fill:'orange'} : {fill:'white'}}/> },
-        { name:'Search', icon:<SearchSvg /> },
-        { name:'My Library', icon: <LibraryView />}
+        { name:'Feed', icon:<FeedSvg /> ,link:'/feed'},
+        { name:'Playlists', icon:<PlaylistSvg /> ,link:'/playlist'},
+        { name:'Discover', icon:<DiscoverSvg />,link:'/' },
+        { name:'Search', icon:<SearchSvg />,link:'/search' },
+        { name:'My Library', icon: <LibraryView />,link:'/library'}
     ]
     return (
         <SafeAreaView style={{flex:1}}>
@@ -34,17 +34,24 @@ export default function DefaultLayout({children}) {
                 <View style={styles.tabs}>
                     {
                         tabs.map((tab,tabIndex) => (
-                            <View 
-                             key={`screenTab_${tabIndex}`} 
-                             style={styles.tab}
-                             onStartShouldSetResponder={() => setScreenTab(tab.name)}
+                            <Link to={tab.link}
+                              key={`screenTab_${tabIndex}`}  
+                              style={styles.tab}
                             >
-                                {tab.icon}
+                                <View 
+                                  style={styles.tab}
+                                  onStartShouldSetResponder={() => setScreenTab(tab.name)}
+                                >
+                                    {tab.icon}
+                                    {/* {`<${tab.icon} style={${screenTab==tab? {fill:'orange'} : {fill:'white'}}}>`} */}
 
-                                <Text 
-                                 style={[styles.screenText, screenTab==tab.name && {color:'orange'}]}>{tab.name}
-                                </Text> 
-                            </View>))
+                                    <Text 
+                                    style={[styles.screenText, screenTab==tab.name && {color:'orange'}]}>{tab.name}
+                                    </Text> 
+                                </View>
+                            </Link>
+                            )
+                            )
                     }
                 </View>
             </View>
