@@ -9,8 +9,7 @@ import DownloadSvg from '../components/icons/Download'
 import MoreSvg from '../components/icons/More'
 import ShuffleSvg from '../components/icons/shuffle'
 
-export default function Discover() {
-    const discoverTab = 'TRENDING,TOP SONGS,TOP ALBUMS,RECENTLY ADDED'.split(',')
+export default function Discover({discoverTab , tab , setTab}) {
     const options = 'All,Hip-Hop,Afrobeats,Latin,Reggae/Dancehall,R&B,Pop,Electronic,Instrumental,Podcast'.split(',')
 
     const [songBg , setSongBg] = useState(null)
@@ -33,7 +32,6 @@ export default function Discover() {
     ]
 
     const [musicType , setMusicType] = useState(0)
-    const [tab,setTab] = useState(0)
     return (
         <View style={styles.handleStatusBar}>
             <View>
