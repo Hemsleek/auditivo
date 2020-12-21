@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native'
 import {Link} from 'react-router-native'
+import GesstureRecognizer , {swipeDirections} from 'react-native-swipe-gestures'
 
 //svg
 import FeedSvg from '../components/icons/Feed'
@@ -26,11 +27,20 @@ export default function DefaultLayout({children}) {
         { name:'Search', icon:<SearchSvg />,link:'/search' },
         { name:'My Library', icon: <LibraryView />,link:'/library'}
     ]
+
+    const config = {
+        velocityThreshold: 0.3,
+        directionalOffsetThreshold: 80
+      };
+
     return (
         <SafeAreaView style={{flex:1}}>
              <StatusBar backgroundColor='#000' barStyle="light-content" />
-            <View style={{flex:1, backgroundColor:'black'}}>
-                {children}
+
+             <View style={{flex:1, backgroundColor:'black'}}>
+                <GesstureRecognizer style={{flex:1, backgroundColor:'black'}} onSwipe={(direction ,state) => {console.log({direction , state});}} config = {config} >
+                    {children}
+                </GesstureRecognizer>
                 <View style={styles.tabs}>
                     {
                         tabs.map((tab,tabIndex) => (
