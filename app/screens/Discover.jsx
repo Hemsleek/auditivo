@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View, ScrollView, StatusBar,Platform, TouchableOpacity , Image} from 'react-native'
+import { StyleSheet, Text, View, ScrollView, StatusBar,Platform, TouchableWithoutFeedback , Image} from 'react-native'
 
 //svg icons
 import PlaySvg from '../components/icons/Play'
@@ -41,12 +41,14 @@ export default function Discover({discoverTab , tab , setTab}) {
                     
                     {
                         discoverTab.map((item, itemIndex) => 
-                        <View  
-                         key={`discoverTab_${itemIndex}`} 
-                         onStartShouldSetResponder={() =>setTab(itemIndex)}
-                         style={[styles.tab,tab==itemIndex && styles.orangeBorder]}>
+                         
+                         <TouchableWithoutFeedback onPress={() =>setTab(itemIndex)}  key={`discoverTab_${itemIndex}`}>
+                            <View style={[styles.tab,tab==itemIndex && styles.orangeBorder]}>
                            <Text style={ [styles.tabText,tab==itemIndex && {color:'black'}] }> {item} </Text>
-                        </View>)
+                            </View>
+                        </TouchableWithoutFeedback>
+                        
+                        )
                     }
                 </View>
                 
@@ -56,7 +58,12 @@ export default function Discover({discoverTab , tab , setTab}) {
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                     <View style={styles.musicType}>
                     { 
-                        options.map((item, itemIndex) => <Text onStartShouldSetResponder={() => setMusicType(itemIndex)} key={`musicType_${itemIndex}`} style={[styles.typeText,musicType==itemIndex && {backgroundColor:'gray'}]}>{item}</Text> )
+                        options.map((item, itemIndex) => 
+                        <TouchableWithoutFeedback onPress ={() => setMusicType(itemIndex)} key={`musicType_${itemIndex}`} >
+                            <Text style={[styles.typeText,musicType==itemIndex && {backgroundColor:'gray'}]}>{item}</Text>
+                        </TouchableWithoutFeedback>
+                        
+                         )
                     }
                     </View>
                 </ScrollView>
@@ -70,7 +77,9 @@ export default function Discover({discoverTab , tab , setTab}) {
                     <View style={styles.main}>
                         {
                             defaultSongs.map((song , songIndex)=> (
-                              <View style={[styles.defaultSong, songBg==songIndex && {backgroundColor:'rgba(255,255,255,.2)'}]} onStartShouldSetResponder={() => setSongBg(songIndex)} key={`defaultSong_${songIndex}`} >
+                              <TouchableWithoutFeedback onPress = {() => setSongBg(songIndex)} key={`defaultSong_${songIndex}`}>
+                                <View style={[styles.defaultSong, songBg==songIndex && {backgroundColor:'rgba(255,255,255,.2)'}]}>
+
                                   <Image style={{width:80,height:80}} source={song.coverPhoto} />
                                   <View style={styles.songOption}>
                                     <View style={styles.songTextContainer}>
@@ -102,7 +111,9 @@ export default function Discover({discoverTab , tab , setTab}) {
                                     </View>
                                   </View>
                               </View>  
+                              </TouchableWithoutFeedback>            
                             ))
+
                         }
                     </View>
                 </ScrollView>

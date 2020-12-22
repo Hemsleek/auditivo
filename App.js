@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeRouter, Route, Switch } from 'react-router-native';
 
-
 import DefaultLayout from './app/layout/DefaultLayout';
 import Discover from './app/screens/Discover'
 import Feed from './app/screens/Feed'
