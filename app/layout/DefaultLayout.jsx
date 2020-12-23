@@ -22,7 +22,7 @@ export default function DefaultLayout({ children,handleSwipe }) {
   const tabs = [
     { name: "Feed", icon: <FeedSvg />, link: "/feed" },
     { name: "Playlists", icon: <PlaylistSvg />, link: "/playlist" },
-    { name: "Discover", icon: <DiscoverSvg />, link: "/" },
+    { name: "Discover", icon: <DiscoverSvg style={`${screenTab==tab? {fill:'orange'} : {fill:'white'}}}>` />, link: "/" },
     { name: "Search", icon: <SearchSvg />, link: "/search" },
     { name: "My Library", icon: <LibraryView />, link: "/library" },
   ];

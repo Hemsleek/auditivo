@@ -44,7 +44,7 @@ export default function Discover({discoverTab , tab , setTab}) {
                          
                          <TouchableWithoutFeedback onPress={() =>setTab(itemIndex)}  key={`discoverTab_${itemIndex}`}>
                             <View style={[styles.tab,tab==itemIndex && styles.orangeBorder]}>
-                           <Text style={ [styles.tabText,tab==itemIndex && {color:'black'}] }> {item} </Text>
+                                <Text style={ [styles.tabText,tab==itemIndex && {color:'black'}] }> {item} </Text>
                             </View>
                         </TouchableWithoutFeedback>
                         
