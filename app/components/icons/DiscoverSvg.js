@@ -19,7 +19,7 @@ function SvgComponent(props) {
             </G>
             <Defs>
                 <ClipPath id="prefix__clip0">
-                    <Path fill="#fff" d="M0 0h39.45v49.68H0z" />
+                    <Path fill={props.fill || "#fff"} d="M0 0h39.45v49.68H0z" />
                 </ClipPath>
             </Defs>
         </Svg>
